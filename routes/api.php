@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ActivityController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,8 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
 Route::middleware('auth:sanctum')->get('/me', [AuthController::class, 'me']);
 
+Route::middleware('auth:sanctum')->post('/user/update', [UserController::class, 'update']);
+Route::middleware('auth:sanctum')->post('/user/image/update', [UserController::class, 'updateImage']);
 
 Route::middleware('auth:sanctum')->group(function(){
    Route::apiResource('activities', ActivityController::class); 
