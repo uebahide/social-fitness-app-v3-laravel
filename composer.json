@@ -11,7 +11,8 @@
         "php": "^8.0",
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "league/flysystem-aws-s3-v3": "^3.0"
     },
     "require-dev": {
         "filp/whoops": "^2.15",
