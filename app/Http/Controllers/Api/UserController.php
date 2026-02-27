@@ -33,15 +33,31 @@ class UserController extends Controller
     }
 
     public function updateImage(Request $request)
-    {
-        $request->validate(['image' => 'required|image|max:2048']);
-        $user = $request->user();
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('uploads', 'public');
-            $user->update([
-                "image_path" =>Storage::url($path)
-            ]);
-            return response()->json(['url' => asset('storage/' . $path)], 200);
-        }
+{
+    $request->validate([
+        'image' => ['required', 'image', 'max:1024'],
+    ]);
+
+    $user = $request->user();
+
+    if (!empty($user->image_path)) {
+        Storage::disk('s3')->delete($user->image_path);
     }
+
+    $path = $request->file('image')->store("avatars/{$user->id}", 's3');
+
+    if ($path === false) {
+        return response()->json([
+            'error' => 'Upload failed'
+        ], 500);
+    }
+
+    $user->image_path = $path;
+    $user->save();
+
+    return response()->json([
+        'image_path' => $path,
+        'url' => Storage::disk('s3')->url($path),
+    ]);
+}
 }
