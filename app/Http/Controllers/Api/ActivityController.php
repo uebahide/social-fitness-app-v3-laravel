@@ -13,7 +13,7 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        return Activity::all();
+        return Activity::with('User')->get();
     }
 
     /**
@@ -21,15 +21,18 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        $acticity = Activity::create(
+        $user = $request->user();
+
+        $activity = Activity::create(
             [
                 "title" => $request -> title,
                 "description" => $request -> description,
+                "user_id" => $user->id
             ]
         );
         return response()->json([
             "message"=> "Activity was created successfully",
-            "activity" => $acticity
+            "activity" => $activity
         ], 200);
     }
 
