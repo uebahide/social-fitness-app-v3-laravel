@@ -1,5 +1,10 @@
 FROM richarvey/nginx-php-fpm:3.1.6
 
+WORKDIR /var/www/html
+
+COPY composer.json composer.lock ./
+RUN composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
+
 COPY . .
 
 # Image config
