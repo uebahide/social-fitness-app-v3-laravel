@@ -32,4 +32,3 @@ services:
 databases:
     - name: socialfit-postgres
       plan: free
-      previewPlan: free
