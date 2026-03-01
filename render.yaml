@@ -1,33 +1,35 @@
+previews:
+    generation: automatic
+
 services:
     - type: web
-      name: social-fit-prod
-      env: docker
-      dockerfilePath: ./Dockerfile
-      plan: free
-      envVars:
-          - key: APP_ENV
-            value: production
-          - key: DATABASE_URL
-            fromDatabase:
-                name: social-fit-db
-                property: connectionString
-databases:
-    - name: social-fit-db
+      name: social-fitness-app-backend
+      runtime: php
       plan: free
 
-preview:
-    services:
-        - type: web
-          name: social-fit-preview
-          env: docker
-          dockerfilePath: ./Dockerfile
-          envVars:
-              - key: APP_ENV
-                value: preview
-              - key: DATABASE_URL
-                fromDatabase:
-                    name: social-fit-preview-db
-                    property: connectionString
-    databases:
-        - name: social-fit-preview-db
-          plan: free
+      envVars:
+          # 環境名は previewValue で分けられる
+          - key: APP_ENV
+            value: production
+            previewValue: preview
+
+          - key: APP_NAME
+            value: SocialFit
+            previewValue: SocialFit (Preview)
+
+          # Laravelは pgsql
+          - key: DB_CONNECTION
+            value: pgsql
+
+          # Render Postgres の connectionString を注入
+          - key: DATABASE_URL
+            fromDatabase:
+                name: socialfit-postgres-prod
+                property: connectionString
+
+          - fromGroup: secrets
+
+databases:
+    - name: socialfit-postgres-prod
+      plan: starter
+      previewPlan: free
