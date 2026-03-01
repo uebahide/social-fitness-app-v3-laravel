@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: socialfit-dev-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: socialfit_dev
+    ports:
+      - "5433:5432"
+    volumes:
+      - socialfit_pgdata:/var/lib/postgresql/data
+volumes:
+  socialfit_pgdata: {}

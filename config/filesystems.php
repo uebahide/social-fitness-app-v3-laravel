@@ -57,10 +57,10 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'key' => env('APP_ENV') === 'preview' ? env('AWS_ACCESS_KEY_ID_PREVIEW') : env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('APP_ENV') === 'preview' ? env('AWS_SECRET_ACCESS_KEY_PREVIEW') : env('AWS_SECRET_ACCESS_KEY'),
             'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
+            'bucket' => env('APP_ENV') === 'preview' ? env('AWS_BUCKET_PREVIEW') : env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
             'throw' => true
         ],
