@@ -41,7 +41,7 @@ class User extends Authenticatable
     ];
 
 
-    public function comments(): HasMany
+    public function activities(): HasMany
     {
         return $this->hasMany(Activity::class);
     }
