@@ -3,45 +3,134 @@
 namespace App\Http\Controllers\Api;
 
 use App\Activity;
+use App\Cycling;
+use App\Hiking;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ActivityResource;
+use App\Running;
+use App\Swimming;
+use App\Walking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class ActivityController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Activity::with('User')->get();
+        $activities = $request->user()->activities()->with([
+            'runnings',
+            'walkings',
+            'cyclings',
+            'swimmings',
+            'hikings',
+        ])->latest()->get();
+
+        return ActivityResource::collection($activities);
     }
+
+
+
 
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(Request $request)
     {
-        $user = $request->user();
+        $user = $request->user(); 
 
-        $activity = Activity::create(
-            [
-                "title" => $request -> title,
-                "description" => $request -> description,
-                "user_id" => $user->id
-            ]
-        );
+        $request->validate([
+            'title' => ['nullable','string','max:255'],
+            'description' => ['nullable','string'],
+            'category' => ['required','string'],
+        ]);
+
+        $category = Str::lower(trim($request->category));
+
+        [$activity, $detail] = DB::transaction(function () use ($request, $user, $category) {
+
+            $activity = Activity::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'category' => $category,   // ← DBにも正規化した値で保存
+                'user_id' => $user->id,
+            ]);
+
+            // 共通（距離/時間）が必要なカテゴリ
+            if (in_array($category, ['running','walking','cycling','swimming','hiking'], true)) {
+                $request->validate([
+                    'distance' => ['numeric','min:0', 'nullable'],
+                    'duration' => ['integer','min:0', 'nullable'],
+                ]);
+            }
+
+            $detail = null;
+
+            if ($category === 'running') {
+                $detail = Running::create([
+                    'activity_id' => $activity->id,
+                    'distance' => $request->distance,
+                    'duration' => $request->duration,
+                ]);
+            } elseif ($category === 'walking') {
+                $detail = Walking::create([
+                    'activity_id' => $activity->id,
+                    'distance' => $request->distance,
+                    'duration' => $request->duration,
+                ]);
+            } elseif ($category === 'cycling') {
+                $detail = Cycling::create([
+                    'activity_id' => $activity->id,
+                    'distance' => $request->distance,
+                    'duration' => $request->duration,
+                ]);
+            } elseif ($category === 'swimming') {
+                $detail = Swimming::create([
+                    'activity_id' => $activity->id,
+                    'distance' => $request->distance,
+                    'duration' => $request->duration,
+                ]);
+            } elseif ($category === 'hiking') {
+                $request->validate([
+                    'location' => ['string','max:255', 'nullable'],
+                ]);
+
+                $detail = Hiking::create([
+                    'activity_id' => $activity->id,
+                    'distance' => $request->distance,
+                    'duration' => $request->duration,
+                    'location' => $request->location,
+                ]);
+            }
+
+            return [$activity, $detail];
+        });
+
         return response()->json([
-            "message"=> "Activity was created successfully",
-            "activity" => $activity
-        ], 200);
+            'message' => 'Activity was created successfully',
+            'activity' => $activity,
+            'detail' => $detail,
+        ], 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request, string $id)
     {
-        return Activity::findOrFail($id);
+        $activity = $request->user()->activities()->with([
+            'runnings',
+            'walkings',
+            'cyclings',
+            'swimmings',
+            'hikings',
+        ])->findOrFail($id);
+
+        return new ActivityResource($activity);
     }
 
     /**
@@ -49,11 +138,11 @@ class ActivityController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $activity = Activity::findOrFail($id);
+        $activity = $request->user()->activities()->findOrFail($id);
         $activity->update(
             [
                 "title" => $request -> title,
-                "description" => $request -> description
+                "description" => $request -> description,
             ]
         );
         return response()->json(
@@ -66,9 +155,9 @@ class ActivityController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
-        $activity = Activity::findOrFail($id);
+        $activity = $request->user()->activities()->findOrFail($id);
         $activity->delete();
         return response()->json([
             "message"=> "Activity was deleted successfully",

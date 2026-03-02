@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ActivityController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,3 +35,5 @@ Route::middleware('auth:sanctum')->post('/user/image/update', [UserController::c
 Route::middleware('auth:sanctum')->group(function(){
    Route::apiResource('activities', ActivityController::class); 
 });
+
+Route::get('/categories', [CategoryController::class, 'index']);
