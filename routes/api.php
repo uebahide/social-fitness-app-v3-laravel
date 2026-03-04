@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ActivityController;
+use App\Http\Controllers\Api\AnalyticsController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\UserController;
@@ -23,17 +24,23 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+//auth routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
 Route::middleware('auth:sanctum')->get('/me', [AuthController::class, 'me']);
 
+//user routes
 Route::middleware('auth:sanctum')->post('/user/update', [UserController::class, 'update']);
 Route::middleware('auth:sanctum')->post('/user/image/update', [UserController::class, 'updateImage']);
 
+//activity routes
 Route::middleware('auth:sanctum')->group(function(){
    Route::apiResource('activities', ActivityController::class); 
 });
 
+//analytics routes
+Route::middleware('auth:sanctum')->get('/analytics/activities/dashboard', [AnalyticsController::class, 'dashboard']);
+
+//category routes
 Route::get('/categories', [CategoryController::class, 'index']);
