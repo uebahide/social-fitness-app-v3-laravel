@@ -32,6 +32,28 @@ class ActivityController extends Controller
         return ActivityResource::collection($activities);
     }
 
+    public function paginated(Request $request)
+    {
+        $perPage = $request->input('per_page', 20);
+
+        $activities = $request->user()->activities()->with([
+            'runnings',
+            'walkings',
+            'cyclings',
+            'swimmings',
+            'hikings',
+        ])->latest('id')->paginate($perPage);
+
+        return ActivityResource::collection($activities);
+    }
+
+    public function count(Request $request){
+        $activities = $request->user()->activities()->count();
+        return response()->json([
+            'count' => $activities
+        ], 200);
+    }
+
 
 
 

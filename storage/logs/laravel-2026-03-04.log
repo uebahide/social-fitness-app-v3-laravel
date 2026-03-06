@@ -1,0 +1,402 @@
+[2026-03-04 14:15:51] local.ERROR: Command "make:AnalyticsController" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:AnalyticsController\" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view at /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/symfony/console/Application.php:759)
+[stacktrace]
+#0 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/symfony/console/Application.php(298): Symfony\\Component\\Console\\Application->find('make:AnalyticsC...')
+#1 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/symfony/console/Application.php(195): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 {main}
+"} 
+[2026-03-04 14:16:55] local.ERROR: syntax error, unexpected token "}" {"exception":"[object] (ParseError(code: 0): syntax error, unexpected token \"}\" at /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Http/Controllers/Api/AnalyticsController.php:11)
+[stacktrace]
+#0 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/composer/ClassLoader.php(427): {closure:Composer\\Autoload\\ClassLoader::initializeIncludeClosure():575}('/Users/hidekazu...')
+#1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Http\\\\Contro...')
+#2 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Support/Reflector.php(40): class_exists('App\\\\Http\\\\Contro...')
+#3 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(260): Illuminate\\Support\\Reflector::isCallable(Array)
+#4 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(239): Illuminate\\Routing\\RouteRegistrar->compileAction(Array)
+#5 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(285): Illuminate\\Routing\\RouteRegistrar->registerRoute('get', '/analytics/acti...', Array)
+#6 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/routes/api.php(39): Illuminate\\Routing\\RouteRegistrar->__call('get', Array)
+#7 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteFileRegistrar.php(35): require('/Users/hidekazu...')
+#8 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php(513): Illuminate\\Routing\\RouteFileRegistrar->register('/Users/hidekazu...')
+#9 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php(467): Illuminate\\Routing\\Router->loadRoutes('/Users/hidekazu...')
+#10 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(207): Illuminate\\Routing\\Router->group(Array, '/Users/hidekazu...')
+#11 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Providers/RouteServiceProvider.php(71): Illuminate\\Routing\\RouteRegistrar->group('/Users/hidekazu...')
+#12 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Providers/RouteServiceProvider.php(38): App\\Providers\\RouteServiceProvider->mapApiRoutes()
+#13 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\\Providers\\RouteServiceProvider->map()
+#14 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#15 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Support/Providers/RouteServiceProvider.php(168): Illuminate\\Container\\Container->call(Array)
+#19 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Support/Providers/RouteServiceProvider.php(59): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#20 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->{closure:Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider::register():53}()
+#21 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#22 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(83): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#23 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#24 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#25 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php(144): Illuminate\\Container\\Container->call(Object(Closure))
+#26 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1154): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#27 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#28 [internal function]: Illuminate\\Foundation\\Application->{closure:Illuminate\\Foundation\\Application::boot():1131}(Object(App\\Providers\\RouteServiceProvider), 'App\\\\Providers\\\\R...')
+#29 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1131): array_walk(Array, Object(Closure))
+#30 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#31 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#32 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(474): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#33 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(196): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#34 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 {main}
+"} 
+[2026-03-04 14:16:58] local.ERROR: syntax error, unexpected token "}" {"exception":"[object] (ParseError(code: 0): syntax error, unexpected token \"}\" at /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Http/Controllers/Api/AnalyticsController.php:11)
+[stacktrace]
+#0 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/composer/ClassLoader.php(427): {closure:Composer\\Autoload\\ClassLoader::initializeIncludeClosure():575}('/Users/hidekazu...')
+#1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Http\\\\Contro...')
+#2 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Support/Reflector.php(40): class_exists('App\\\\Http\\\\Contro...')
+#3 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(260): Illuminate\\Support\\Reflector::isCallable(Array)
+#4 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(239): Illuminate\\Routing\\RouteRegistrar->compileAction(Array)
+#5 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(285): Illuminate\\Routing\\RouteRegistrar->registerRoute('get', '/analytics/acti...', Array)
+#6 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/routes/api.php(39): Illuminate\\Routing\\RouteRegistrar->__call('get', Array)
+#7 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteFileRegistrar.php(35): require('/Users/hidekazu...')
+#8 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php(513): Illuminate\\Routing\\RouteFileRegistrar->register('/Users/hidekazu...')
+#9 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php(467): Illuminate\\Routing\\Router->loadRoutes('/Users/hidekazu...')
+#10 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(207): Illuminate\\Routing\\Router->group(Array, '/Users/hidekazu...')
+#11 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Providers/RouteServiceProvider.php(71): Illuminate\\Routing\\RouteRegistrar->group('/Users/hidekazu...')
+#12 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Providers/RouteServiceProvider.php(38): App\\Providers\\RouteServiceProvider->mapApiRoutes()
+#13 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\\Providers\\RouteServiceProvider->map()
+#14 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#15 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Support/Providers/RouteServiceProvider.php(168): Illuminate\\Container\\Container->call(Array)
+#19 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Support/Providers/RouteServiceProvider.php(59): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#20 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->{closure:Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider::register():53}()
+#21 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#22 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(83): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#23 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#24 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#25 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php(144): Illuminate\\Container\\Container->call(Object(Closure))
+#26 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1154): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#27 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#28 [internal function]: Illuminate\\Foundation\\Application->{closure:Illuminate\\Foundation\\Application::boot():1131}(Object(App\\Providers\\RouteServiceProvider), 'App\\\\Providers\\\\R...')
+#29 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1131): array_walk(Array, Object(Closure))
+#30 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#31 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#32 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(474): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#33 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(196): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#34 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 {main}
+"} 
+[2026-03-04 14:16:58] local.ERROR: syntax error, unexpected token "}" {"exception":"[object] (ParseError(code: 0): syntax error, unexpected token \"}\" at /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Http/Controllers/Api/AnalyticsController.php:11)
+[stacktrace]
+#0 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/composer/ClassLoader.php(427): {closure:Composer\\Autoload\\ClassLoader::initializeIncludeClosure():575}('/Users/hidekazu...')
+#1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Http\\\\Contro...')
+#2 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Support/Reflector.php(40): class_exists('App\\\\Http\\\\Contro...')
+#3 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(260): Illuminate\\Support\\Reflector::isCallable(Array)
+#4 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(239): Illuminate\\Routing\\RouteRegistrar->compileAction(Array)
+#5 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(285): Illuminate\\Routing\\RouteRegistrar->registerRoute('get', '/analytics/acti...', Array)
+#6 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/routes/api.php(39): Illuminate\\Routing\\RouteRegistrar->__call('get', Array)
+#7 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteFileRegistrar.php(35): require('/Users/hidekazu...')
+#8 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php(513): Illuminate\\Routing\\RouteFileRegistrar->register('/Users/hidekazu...')
+#9 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php(467): Illuminate\\Routing\\Router->loadRoutes('/Users/hidekazu...')
+#10 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(207): Illuminate\\Routing\\Router->group(Array, '/Users/hidekazu...')
+#11 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Providers/RouteServiceProvider.php(71): Illuminate\\Routing\\RouteRegistrar->group('/Users/hidekazu...')
+#12 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Providers/RouteServiceProvider.php(38): App\\Providers\\RouteServiceProvider->mapApiRoutes()
+#13 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\\Providers\\RouteServiceProvider->map()
+#14 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#15 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Support/Providers/RouteServiceProvider.php(168): Illuminate\\Container\\Container->call(Array)
+#19 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Support/Providers/RouteServiceProvider.php(59): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#20 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->{closure:Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider::register():53}()
+#21 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#22 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(83): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#23 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#24 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#25 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php(144): Illuminate\\Container\\Container->call(Object(Closure))
+#26 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1154): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#27 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#28 [internal function]: Illuminate\\Foundation\\Application->{closure:Illuminate\\Foundation\\Application::boot():1131}(Object(App\\Providers\\RouteServiceProvider), 'App\\\\Providers\\\\R...')
+#29 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1131): array_walk(Array, Object(Closure))
+#30 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#31 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#32 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(474): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#33 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(196): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#34 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 {main}
+"} 
+[2026-03-04 14:23:56] local.ERROR: syntax error, unexpected token "return" {"exception":"[object] (ParseError(code: 0): syntax error, unexpected token \"return\" at /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Http/Controllers/Api/AnalyticsController.php:39)
+[stacktrace]
+#0 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/composer/ClassLoader.php(427): {closure:Composer\\Autoload\\ClassLoader::initializeIncludeClosure():575}('/Users/hidekazu...')
+#1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Http\\\\Contro...')
+#2 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Support/Reflector.php(40): class_exists('App\\\\Http\\\\Contro...')
+#3 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(260): Illuminate\\Support\\Reflector::isCallable(Array)
+#4 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(239): Illuminate\\Routing\\RouteRegistrar->compileAction(Array)
+#5 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(285): Illuminate\\Routing\\RouteRegistrar->registerRoute('get', '/analytics/acti...', Array)
+#6 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/routes/api.php(39): Illuminate\\Routing\\RouteRegistrar->__call('get', Array)
+#7 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteFileRegistrar.php(35): require('/Users/hidekazu...')
+#8 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php(513): Illuminate\\Routing\\RouteFileRegistrar->register('/Users/hidekazu...')
+#9 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php(467): Illuminate\\Routing\\Router->loadRoutes('/Users/hidekazu...')
+#10 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(207): Illuminate\\Routing\\Router->group(Array, '/Users/hidekazu...')
+#11 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Providers/RouteServiceProvider.php(71): Illuminate\\Routing\\RouteRegistrar->group('/Users/hidekazu...')
+#12 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Providers/RouteServiceProvider.php(38): App\\Providers\\RouteServiceProvider->mapApiRoutes()
+#13 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\\Providers\\RouteServiceProvider->map()
+#14 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#15 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Support/Providers/RouteServiceProvider.php(168): Illuminate\\Container\\Container->call(Array)
+#19 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Support/Providers/RouteServiceProvider.php(59): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#20 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->{closure:Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider::register():53}()
+#21 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#22 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(83): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#23 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#24 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#25 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php(144): Illuminate\\Container\\Container->call(Object(Closure))
+#26 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1154): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#27 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#28 [internal function]: Illuminate\\Foundation\\Application->{closure:Illuminate\\Foundation\\Application::boot():1131}(Object(App\\Providers\\RouteServiceProvider), 'App\\\\Providers\\\\R...')
+#29 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1131): array_walk(Array, Object(Closure))
+#30 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#31 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#32 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(474): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#33 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(196): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#34 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 {main}
+"} 
+[2026-03-04 14:23:58] local.ERROR: syntax error, unexpected token "return" {"exception":"[object] (ParseError(code: 0): syntax error, unexpected token \"return\" at /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Http/Controllers/Api/AnalyticsController.php:39)
+[stacktrace]
+#0 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/composer/ClassLoader.php(427): {closure:Composer\\Autoload\\ClassLoader::initializeIncludeClosure():575}('/Users/hidekazu...')
+#1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Http\\\\Contro...')
+#2 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Support/Reflector.php(40): class_exists('App\\\\Http\\\\Contro...')
+#3 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(260): Illuminate\\Support\\Reflector::isCallable(Array)
+#4 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(239): Illuminate\\Routing\\RouteRegistrar->compileAction(Array)
+#5 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(285): Illuminate\\Routing\\RouteRegistrar->registerRoute('get', '/analytics/acti...', Array)
+#6 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/routes/api.php(39): Illuminate\\Routing\\RouteRegistrar->__call('get', Array)
+#7 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteFileRegistrar.php(35): require('/Users/hidekazu...')
+#8 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php(513): Illuminate\\Routing\\RouteFileRegistrar->register('/Users/hidekazu...')
+#9 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php(467): Illuminate\\Routing\\Router->loadRoutes('/Users/hidekazu...')
+#10 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(207): Illuminate\\Routing\\Router->group(Array, '/Users/hidekazu...')
+#11 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Providers/RouteServiceProvider.php(71): Illuminate\\Routing\\RouteRegistrar->group('/Users/hidekazu...')
+#12 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Providers/RouteServiceProvider.php(38): App\\Providers\\RouteServiceProvider->mapApiRoutes()
+#13 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\\Providers\\RouteServiceProvider->map()
+#14 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#15 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Support/Providers/RouteServiceProvider.php(168): Illuminate\\Container\\Container->call(Array)
+#19 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Support/Providers/RouteServiceProvider.php(59): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#20 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->{closure:Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider::register():53}()
+#21 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#22 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(83): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#23 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#24 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#25 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php(144): Illuminate\\Container\\Container->call(Object(Closure))
+#26 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1154): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#27 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#28 [internal function]: Illuminate\\Foundation\\Application->{closure:Illuminate\\Foundation\\Application::boot():1131}(Object(App\\Providers\\RouteServiceProvider), 'App\\\\Providers\\\\R...')
+#29 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1131): array_walk(Array, Object(Closure))
+#30 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#31 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#32 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(474): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#33 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(196): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#34 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 {main}
+"} 
+[2026-03-04 14:23:58] local.ERROR: syntax error, unexpected token "return" {"exception":"[object] (ParseError(code: 0): syntax error, unexpected token \"return\" at /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Http/Controllers/Api/AnalyticsController.php:39)
+[stacktrace]
+#0 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/composer/ClassLoader.php(427): {closure:Composer\\Autoload\\ClassLoader::initializeIncludeClosure():575}('/Users/hidekazu...')
+#1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Http\\\\Contro...')
+#2 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Support/Reflector.php(40): class_exists('App\\\\Http\\\\Contro...')
+#3 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(260): Illuminate\\Support\\Reflector::isCallable(Array)
+#4 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(239): Illuminate\\Routing\\RouteRegistrar->compileAction(Array)
+#5 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(285): Illuminate\\Routing\\RouteRegistrar->registerRoute('get', '/analytics/acti...', Array)
+#6 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/routes/api.php(39): Illuminate\\Routing\\RouteRegistrar->__call('get', Array)
+#7 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteFileRegistrar.php(35): require('/Users/hidekazu...')
+#8 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php(513): Illuminate\\Routing\\RouteFileRegistrar->register('/Users/hidekazu...')
+#9 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php(467): Illuminate\\Routing\\Router->loadRoutes('/Users/hidekazu...')
+#10 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Routing/RouteRegistrar.php(207): Illuminate\\Routing\\Router->group(Array, '/Users/hidekazu...')
+#11 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Providers/RouteServiceProvider.php(71): Illuminate\\Routing\\RouteRegistrar->group('/Users/hidekazu...')
+#12 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/app/Providers/RouteServiceProvider.php(38): App\\Providers\\RouteServiceProvider->mapApiRoutes()
+#13 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\\Providers\\RouteServiceProvider->map()
+#14 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#15 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Support/Providers/RouteServiceProvider.php(168): Illuminate\\Container\\Container->call(Array)
+#19 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Support/Providers/RouteServiceProvider.php(59): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#20 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->{closure:Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider::register():53}()
+#21 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#22 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(83): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#23 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#24 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#25 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php(144): Illuminate\\Container\\Container->call(Object(Closure))
+#26 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1154): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#27 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#28 [internal function]: Illuminate\\Foundation\\Application->{closure:Illuminate\\Foundation\\Application::boot():1131}(Object(App\\Providers\\RouteServiceProvider), 'App\\\\Providers\\\\R...')
+#29 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1131): array_walk(Array, Object(Closure))
+#30 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#31 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#32 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(474): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#33 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(196): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#34 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 {main}
+"} 
+[2026-03-04 14:36:28] local.ERROR: Command "make:service" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:service\" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view at /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/symfony/console/Application.php:759)
+[stacktrace]
+#0 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/symfony/console/Application.php(298): Symfony\\Component\\Console\\Application->find('make:service')
+#1 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/symfony/console/Application.php(195): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /Users/hidekazuueba/Desktop/social-fitness-app-v3-laravel/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 {main}
+"} 

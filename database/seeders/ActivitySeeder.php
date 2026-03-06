@@ -9,6 +9,7 @@ use App\Running;
 use App\Swimming;
 use App\User;
 use App\Walking;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -68,23 +69,47 @@ class ActivitySeeder extends Seeder
             'Oze Marshlands',
         ];
 
+        $totalActivities = array_sum($distribution);
+        $startDate = Carbon::now()->subDays(90);
+        $endDate = Carbon::now();
+
+        // カテゴリが連続しないよう、全アクティビティを先に配列化してシャッフル
+        $activitiesToCreate = [];
         $index = 0;
         foreach ($distribution as $category => $count) {
             for ($i = 0; $i < $count; $i++) {
                 $index++;
-                $title = $titles[$category][array_rand($titles[$category])] . ' #' . $index;
-                $description = $descriptions[array_rand($descriptions)];
+                $activitiesToCreate[] = [
+                    'category' => $category,
+                    'title' => $titles[$category][array_rand($titles[$category])] . ' #' . $index,
+                    'description' => $descriptions[array_rand($descriptions)],
+                ];
+            }
+        }
+        shuffle($activitiesToCreate);
 
-                DB::transaction(function () use ($user, $category, $title, $description, $hikingLocations) {
+        foreach ($activitiesToCreate as $idx => $item) {
+            $category = $item['category'];
+            $title = $item['title'];
+            $description = $item['description'];
+
+            // 90日前から今日まで均等に作成日をばらつかせる
+            $progress = $totalActivities > 1 ? $idx / ($totalActivities - 1) : 1;
+            $createdAt = $startDate->copy()->addSeconds(
+                (int) (($endDate->timestamp - $startDate->timestamp) * $progress)
+            );
+
+            DB::transaction(function () use ($user, $category, $title, $description, $hikingLocations, $createdAt) {
                     $activity = Activity::create([
                         'user_id' => $user->id,
                         'title' => $title,
                         'description' => $description,
                         'category' => $category,
+                        'created_at' => $createdAt,
+                        'updated_at' => $createdAt,
                     ]);
 
-                    $distance = round(mt_rand(100, 5000) / 100, 2); // 1.00 - 50.00 km
-                    $duration = mt_rand(15, 180); // 15 - 180 minutes
+                    [$distance, $duration] = $this->generateRealisticDistanceAndDuration($category);
 
                     match ($category) {
                         'running' => Running::create([
@@ -116,9 +141,39 @@ class ActivitySeeder extends Seeder
                         default => null,
                     };
                 });
-            }
         }
 
         $this->command->info('Created 100 activities with related detail records.');
+    }
+
+    /**
+     * カテゴリに応じた現実的な距離・時間の組み合わせを生成
+     * duration を先に決め、速度から distance を算出
+     */
+    private function generateRealisticDistanceAndDuration(string $category): array
+    {
+        $duration = match ($category) {
+            'running' => mt_rand(20, 90),   // 20-90分（ジョギング〜マラソン練習）
+            'walking' => mt_rand(15, 75),   // 15-75分（散歩〜ウォーキング）
+            'hiking' => mt_rand(60, 240),   // 1-4時間（ハイキング）
+            'swimming' => mt_rand(30, 90),  // 30-90分（プール）
+            'cycling' => mt_rand(30, 150),  // 30-150分（サイクリング）
+            default => mt_rand(30, 60),
+        };
+
+        // 速度(km/h): アマチュア〜中級者程度の現実的な範囲
+        $speedMinMax = match ($category) {
+            'running' => [8.0, 12.0],   // 5:00-7:30/km ペース
+            'walking' => [4.0, 6.0],    // 10:00-15:00/km
+            'hiking' => [2.5, 4.0],     // 15:00-24:00/km（山道）
+            'swimming' => [1.5, 3.0],   // 2-4km/h（プール）
+            'cycling' => [18.0, 28.0],  // 18-28km/h（サイクリング）
+            default => [5.0, 10.0],
+        };
+
+        $speed = $speedMinMax[0] + (mt_rand() / mt_getrandmax()) * ($speedMinMax[1] - $speedMinMax[0]);
+        $distance = round(($duration / 60) * $speed, 2);
+
+        return [$distance, $duration];
     }
 }
