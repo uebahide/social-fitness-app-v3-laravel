@@ -18,8 +18,8 @@ class ActivitySeeder extends Seeder
     /**
      * Run the database seeds.
      *
-     * 割合: running 3, walking 2, hiking 2, swimming 1, cycling 1
-     * 100件: running 34, walking 22, hiking 22, swimming 11, cycling 11
+     * 過去100日間の記録。日によって 0件・1件・2件の activity がランダムに分布。
+     * カテゴリ割合: running 3, walking 2, hiking 2, swimming 1, cycling 1
      */
     public function run(): void
     {
@@ -29,13 +29,7 @@ class ActivitySeeder extends Seeder
             return;
         }
 
-        $distribution = [
-            'running' => 34,
-            'walking' => 22,
-            'hiking' => 22,
-            'swimming' => 11,
-            'cycling' => 11,
-        ];
+        $categories = ['running', 'walking', 'hiking', 'swimming', 'cycling'];
 
         $titles = [
             'running' => ['Morning Run', 'Evening Jog', '5K Run', 'Interval Training', 'Trail Run', 'Long Run', 'Sprint Session', 'Recovery Run', 'Tempo Run', 'Base Run'],
@@ -69,37 +63,40 @@ class ActivitySeeder extends Seeder
             'Oze Marshlands',
         ];
 
-        $totalActivities = array_sum($distribution);
-        $startDate = Carbon::now()->subDays(90);
-        $endDate = Carbon::now();
-
-        // カテゴリが連続しないよう、全アクティビティを先に配列化してシャッフル
-        $activitiesToCreate = [];
-        $index = 0;
-        foreach ($distribution as $category => $count) {
-            for ($i = 0; $i < $count; $i++) {
-                $index++;
-                $activitiesToCreate[] = [
-                    'category' => $category,
-                    'title' => $titles[$category][array_rand($titles[$category])] . ' #' . $index,
-                    'description' => $descriptions[array_rand($descriptions)],
-                ];
+        $days = 100;
+        // 各日の activity 数: 0 = 休み(35%), 1 = 1件(45%), 2 = 2件(20%)
+        $dailyCounts = [];
+        for ($d = 0; $d < $days; $d++) {
+            $r = mt_rand(1, 100);
+            if ($r <= 35) {
+                $dailyCounts[] = 0;
+            } elseif ($r <= 80) {
+                $dailyCounts[] = 1;
+            } else {
+                $dailyCounts[] = 2;
             }
         }
-        shuffle($activitiesToCreate);
 
-        foreach ($activitiesToCreate as $idx => $item) {
-            $category = $item['category'];
-            $title = $item['title'];
-            $description = $item['description'];
+        $totalActivities = array_sum($dailyCounts);
+        $index = 0;
+        $startDate = Carbon::now()->subDays($days - 1)->startOfDay();
 
-            // 90日前から今日まで均等に作成日をばらつかせる
-            $progress = $totalActivities > 1 ? $idx / ($totalActivities - 1) : 1;
-            $createdAt = $startDate->copy()->addSeconds(
-                (int) (($endDate->timestamp - $startDate->timestamp) * $progress)
-            );
+        for ($d = 0; $d < $days; $d++) {
+            $date = $startDate->copy()->addDays($d);
+            $countToday = $dailyCounts[$d];
 
-            DB::transaction(function () use ($user, $category, $title, $description, $hikingLocations, $createdAt) {
+            for ($c = 0; $c < $countToday; $c++) {
+                $index++;
+                $category = $categories[array_rand($categories)];
+                $title = $titles[$category][array_rand($titles[$category])] . ' #' . $index;
+                $description = $descriptions[array_rand($descriptions)];
+
+                // 同日に複数ある場合は時間をずらす（朝・夕など）
+                $hour = $countToday === 2 && $c === 0 ? mt_rand(6, 9) : mt_rand(15, 20);
+                $minute = mt_rand(0, 59);
+                $createdAt = $date->copy()->setTime($hour, $minute, 0);
+
+                DB::transaction(function () use ($user, $category, $title, $description, $hikingLocations, $createdAt) {
                     $activity = Activity::create([
                         'user_id' => $user->id,
                         'title' => $title,
@@ -141,9 +138,10 @@ class ActivitySeeder extends Seeder
                         default => null,
                     };
                 });
+            }
         }
 
-        $this->command->info('Created 100 activities with related detail records.');
+        $this->command->info("Created {$totalActivities} activities over the past {$days} days (some days with 0, some with 2).");
     }
 
     /**

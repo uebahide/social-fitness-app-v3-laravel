@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -61,7 +62,8 @@ class AnalyticsController extends Controller
 
 
 
-        // 30 days daily distance & duration (not sum, just get the values)
+        // 90 days daily distance & duration (not sum, just get the values)
+
         $categories = [
             'running',
             'walking',
@@ -69,18 +71,20 @@ class AnalyticsController extends Controller
             'hiking',
             'swimming',
         ];
-        
+
         $queries = [];
-        
+
+        $startDate = now()->subDays(90)->startOfDay();
+        $endDate = now()->endOfDay();
+
         foreach ($categories as $category) {
-        
             $table = $category . 's';
-        
+
             $queries[] = DB::table('activities')
                 ->join($table, "$table.activity_id", '=', 'activities.id')
                 ->where('activities.user_id', $user->id)
                 ->where('activities.category', $category)
-                ->whereBetween('activities.created_at', [now()->subDays(90), now()])
+                ->whereBetween('activities.created_at', [$startDate, $endDate])
                 ->selectRaw("
                     DATE(activities.created_at) as date,
                     SUM($table.distance) as distance,
@@ -88,19 +92,34 @@ class AnalyticsController extends Controller
                 ")
                 ->groupByRaw('DATE(activities.created_at)');
         }
-        
+
         $query = array_shift($queries);
-        
+
         foreach ($queries as $q) {
             $query->unionAll($q);
         }
-        
-        $dailyDistanceAndDurationValues = DB::query()
+
+        $rawDailyValues = DB::query()
             ->fromSub($query, 't')
             ->selectRaw('date, SUM(distance) as distance, SUM(duration) as duration')
             ->groupBy('date')
             ->orderBy('date')
-            ->get();
+            ->get()
+            ->keyBy('date');
+
+        // 欠損日を0埋め
+        $dailyDistanceAndDurationValues = collect();
+
+        foreach (CarbonPeriod::create($startDate->copy()->toDateString(), $endDate->copy()->toDateString()) as $date) {
+            $dateString = $date->format('Y-m-d');
+            $row = $rawDailyValues->get($dateString);
+
+            $dailyDistanceAndDurationValues->push([
+                'date' => $dateString,
+                'distance' => $row ? (float) $row->distance : 0,
+                'duration' => $row ? (int) $row->duration : 0,
+            ]);
+        }
 
 
         return response()->json([
