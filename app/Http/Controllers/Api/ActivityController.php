@@ -161,17 +161,60 @@ class ActivityController extends Controller
     public function update(Request $request, string $id)
     {
         $activity = $request->user()->activities()->findOrFail($id);
+
         $activity->update(
             [
                 "title" => $request -> title,
                 "description" => $request -> description,
             ]
         );
-        return response()->json(
-            [
-                "message"=> "Activity was updated successfully",
-                "activity" => $activity
-            ], 200);
+        
+        $category = Str::lower(trim($request->category));
+        $detail = null;
+
+        if ($category === 'running') {
+            $detail = Running::where('activity_id', $activity->id)->update([
+                'activity_id' => $activity->id,
+                'distance' => $request->details['distance'],
+                'duration' => $request->details['duration'],
+            ]);
+        } elseif ($category === 'walking') {
+            $detail = Walking::where('activity_id', $activity->id)->update([
+                'activity_id' => $activity->id,
+                'distance' => $request->details['distance'],
+                'duration' => $request->details['duration'],
+            ]);
+        } elseif ($category === 'cycling') {
+            $detail = Cycling::where('activity_id', $activity->id)->update([
+                'activity_id' => $activity->id,
+                'distance' => $request->details['distance'],
+                'duration' => $request->details['duration'],
+            ]);
+        } elseif ($category === 'swimming') {
+            $detail = Swimming::where('activity_id', $activity->id)->update([
+                'activity_id' => $activity->id,
+                'distance' => $request->details['distance'],
+                'duration' => $request->details['duration'],
+            ]);
+        } elseif ($category === 'hiking') {
+            $request->validate([
+                'location' => ['string','max:255', 'nullable'],
+            ]);
+
+            $detail = Hiking::where('activity_id', $activity->id)->update([
+                'activity_id' => $activity->id,
+                'distance' => $request->details['distance'],
+                'duration' => $request->details['duration'],
+                'location' => $request->details['location'],
+            ]);
+        }
+
+
+        return response()->json([
+            'message' => 'Activity was updated successfully',
+            'activity' => $activity,
+            'detail' => $detail,
+        ], 200);
     }
 
     /**
