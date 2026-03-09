@@ -37,6 +37,7 @@ Route::middleware('auth:sanctum')->post('/user/image/update', [UserController::c
 Route::middleware('auth:sanctum')->group(function(){
     Route::get('/activities/paginated', [ActivityController::class, 'paginated']);
     Route::get('/activities/count', [ActivityController::class, 'count']);
+    Route::get('/activities/latest', [ActivityController::class, 'latest']);
    Route::apiResource('activities', ActivityController::class); 
 });
 

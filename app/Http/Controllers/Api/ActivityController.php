@@ -54,8 +54,13 @@ class ActivityController extends Controller
         ], 200);
     }
 
-
-
+    //return the latest activity for the user
+    public function latest(Request $request){
+        $activity = $request->user()->activities()->latest()->first();
+        return response()->json([
+            'activity' => $activity
+        ], 200);
+    }
 
     /**
      * Store a newly created resource in storage.
