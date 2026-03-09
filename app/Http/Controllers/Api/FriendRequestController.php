@@ -48,8 +48,8 @@ class FriendRequestController extends Controller
         ], 201);
     }
     //public function to accept a friend request
-    public function accept(Request $request){
-        $friend_request = $this->received_friend_requests($request)->where("id", $request->id)->first();
+    public function accept(Request $request, String $id){
+        $friend_request = $this->received_friend_requests($request)->where("id", $id)->first();
         if(!$friend_request){
             return response()->json([
                 'message' => "Friend request not found"
@@ -75,8 +75,8 @@ class FriendRequestController extends Controller
         ], 200);
     }
     //public function to reject a friend request
-    public function reject(Request $request){
-        $friend_request = $this->received_friend_requests($request)->where("id", $request->id)->first();
+    public function reject(Request $request, String $id){
+        $friend_request = $this->received_friend_requests($request)->where("id", $id)->first();
         if(!$friend_request){
             return response()->json([
                 'message' => "Friend request not found"
