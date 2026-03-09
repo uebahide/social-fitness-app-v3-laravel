@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Friend_requests;
 use App\Friends;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class FriendRequestController extends Controller
 {
     //private function to get the received friend requests
     private function received_friend_requests($request){
-        return $request->user()->friend_requests()
+        return $request->user()->friend_requests_received()
         ->where("status", "pending")
-        ->where("receiver_id", $request->user()->id)
         ->with("sender")
         ->get();
     }
@@ -38,9 +39,38 @@ class FriendRequestController extends Controller
         ], 200);
     }
     //public function to send a friend request
-    public function send(Request $request){
-        $friend_request = $request->user()->friend_requests()->create([
-            'receiver_id' => $request->receiver_id,
+    public function send(Request $request, String $receiver_id){
+        //console log the receiver_id
+        Log::info('Receiver ID: ' . $receiver_id);
+        if($request->user()->id == $receiver_id){
+            return response()->json([
+                'message' => "You cannot send a friend request to yourself"
+            ], 400);
+        }
+        if(Friend_requests::where("receiver_id", $receiver_id)->where("sender_id", $request->user()->id)->where("status", "pending")->exists()){
+            return response()->json([
+                'message' => "Friend request already sent"
+            ], 400);
+        }
+        if(Friend_requests::where("receiver_id", $receiver_id)->where("sender_id", $request->user()->id)->where("status", "accepted")->exists()){
+            return response()->json([
+                'message' => "Friend already accepted"
+            ], 400);
+        }
+        if(Friend_requests::where("receiver_id", $receiver_id)->where("sender_id", $request->user()->id)->where("status", "rejected")->exists()){
+            return response()->json([
+                'message' => "Friend request rejected"
+            ], 400);
+        }
+        if(Friend_requests::where("receiver_id", $request->user()->id)->where("sender_id", $receiver_id)->exists()){
+            return response()->json([
+                'message' => "You have a friend request from this user already"
+            ], 400);
+        }
+
+        $friend_request = Friend_requests::create([
+            'sender_id' => $request->user()->id,
+            'receiver_id' => $receiver_id,
             'status' => "pending"
         ]);
         return response()->json([
@@ -48,8 +78,8 @@ class FriendRequestController extends Controller
         ], 201);
     }
     //public function to accept a friend request
-    public function accept(Request $request, String $id){
-        $friend_request = $this->received_friend_requests($request)->where("id", $id)->first();
+    public function accept(Request $request, String $request_id){
+        $friend_request = $this->received_friend_requests($request)->where("id", $request_id)->first();
         if(!$friend_request){
             return response()->json([
                 'message' => "Friend request not found"
@@ -75,8 +105,8 @@ class FriendRequestController extends Controller
         ], 200);
     }
     //public function to reject a friend request
-    public function reject(Request $request, String $id){
-        $friend_request = $this->received_friend_requests($request)->where("id", $id)->first();
+    public function reject(Request $request, String $request_id){
+        $friend_request = $this->received_friend_requests($request)->where("id", $request_id)->first();
         if(!$friend_request){
             return response()->json([
                 'message' => "Friend request not found"
