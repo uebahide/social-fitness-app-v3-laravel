@@ -54,9 +54,9 @@ Route::get('/categories', [CategoryController::class, 'index']);
 Route::middleware('auth:sanctum')->group(function(){
     Route::get('/friend-requests/sent', [FriendRequestController::class, 'index_sent']);
     Route::get('/friend-requests/received', [FriendRequestController::class, 'index_received']);
-    Route::post('/friend-requests/send', [FriendRequestController::class, 'send']);
-    Route::post('/friend-requests/{id}/accept', [FriendRequestController::class, 'accept']);
-    Route::post('/friend-requests/{id}/reject', [FriendRequestController::class, 'reject']);
+    Route::post('/friend-requests/send/{receiver_id}', [FriendRequestController::class, 'send']);
+    Route::post('/friend-requests/{request_id}/accept', [FriendRequestController::class, 'accept']);
+    Route::post('/friend-requests/{request_id}/reject', [FriendRequestController::class, 'reject']);
 });
 //friends routes
 Route::middleware('auth:sanctum')->group(function(){
