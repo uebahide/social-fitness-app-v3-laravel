@@ -5,6 +5,8 @@ use App\Http\Controllers\Api\AnalyticsController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\FriendController;
+use App\Http\Controllers\Api\FriendRequestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -46,3 +48,20 @@ Route::middleware('auth:sanctum')->get('/analytics/activities/dashboard', [Analy
 
 //category routes
 Route::get('/categories', [CategoryController::class, 'index']);
+
+
+//friend requests routes
+Route::middleware('auth:sanctum')->group(function(){
+    Route::get('/friend-requests/sent', [FriendRequestController::class, 'index_sent']);
+    Route::get('/friend-requests/received', [FriendRequestController::class, 'index_received']);
+    Route::post('/friend-requests/send', [FriendRequestController::class, 'send']);
+    Route::post('/friend-requests/accept', [FriendRequestController::class, 'accept']);
+    Route::post('/friend-requests/reject', [FriendRequestController::class, 'reject']);
+});
+//friends routes
+Route::middleware('auth:sanctum')->group(function(){
+    Route::get('/friends', [FriendController::class, 'index']);
+    Route::post('/friends', [FriendController::class, 'store']);
+    Route::put('/friends/{id}', [FriendController::class, 'update']);
+    Route::delete('/friends/{id}', [FriendController::class, 'destroy']);
+});
