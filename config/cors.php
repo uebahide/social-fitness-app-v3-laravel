@@ -11,7 +11,9 @@ return [
         'https://social-fitness-app-laravel-docker.onrender.com'
     ],
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => [
+        "'#^https://social-fitness-app-v3-next-(?:git-[a-z0-9-]+|[a-z0-9]+)-hidekazu-7805s-projects\.vercel\.app$#',"
+    ],
 
     'allowed_headers' => ['*'],
 
