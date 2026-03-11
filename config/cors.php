@@ -8,7 +8,7 @@ return [
     'allowed_origins' => [
         'http://localhost:3000',
         'http://127.0.0.1:3000',
-        'https://social-fitness-app-laravel-docker.onrender.com'
+        'https://social-fitness-app-v3-next.vercel.app'
     ],
 
     'allowed_origins_patterns' => [
