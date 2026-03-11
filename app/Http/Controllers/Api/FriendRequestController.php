@@ -57,16 +57,16 @@ class FriendRequestController extends Controller
                 'message' => "Friend already accepted"
             ], 400);
         }
-        if(Friend_requests::where("receiver_id", $receiver_id)->where("sender_id", $request->user()->id)->where("status", "rejected")->exists()){
-            return response()->json([
-                'message' => "Friend request rejected"
-            ], 400);
-        }
         if(Friend_requests::where("receiver_id", $request->user()->id)->where("sender_id", $receiver_id)->exists()){
             return response()->json([
                 'message' => "You have a friend request from this user already"
             ], 400);
         }
+        // if(Friend_requests::where("receiver_id", $receiver_id)->where("sender_id", $request->user()->id)->where("status", "rejected")->exists()){
+        //     return response()->json([
+        //         'message' => "Friend request rejected"
+        //     ], 400);
+        // }
 
         $friend_request = Friend_requests::create([
             'sender_id' => $request->user()->id,
@@ -113,11 +113,21 @@ class FriendRequestController extends Controller
             ], 404);
         }
         //update the friend request status to rejected
-        $friend_request->status = "rejected";
-        $friend_request->save();
+        $friend_request->delete();
 
         return response()->json([
             'message' => "Friend request rejected"
         ], 200);
+    }
+
+    public function search(Request $request){
+        $query = $request->query('query');
+        $friend_requests = $this->received_friend_requests($request);
+        $friend_requests = $friend_requests->filter(function($friend_request) use ($query){
+            return str_contains(strtolower($friend_request->sender->name), strtolower($query));
+        })->values();
+        return response()->json([
+            'friend_requests' => $friend_requests
+        ]);
     }
 }
