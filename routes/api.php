@@ -34,6 +34,7 @@ Route::middleware('auth:sanctum')->get('/me', [AuthController::class, 'me']);
 //user routes
 Route::middleware('auth:sanctum')->post('/user/update', [UserController::class, 'update']);
 Route::middleware('auth:sanctum')->post('/user/image/update', [UserController::class, 'updateImage']);
+Route::middleware('auth:sanctum')->get('/users/search', [UserController::class, 'search']);
 
 //activity routes
 Route::middleware('auth:sanctum')->group(function(){
@@ -50,6 +51,7 @@ Route::middleware('auth:sanctum')->get('/analytics/activities/dashboard', [Analy
 Route::get('/categories', [CategoryController::class, 'index']);
 
 
+
 //friend requests routes
 Route::middleware('auth:sanctum')->group(function(){
     Route::get('/friend-requests/sent', [FriendRequestController::class, 'index_sent']);
@@ -57,11 +59,13 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('/friend-requests/send/{receiver_id}', [FriendRequestController::class, 'send']);
     Route::post('/friend-requests/{request_id}/accept', [FriendRequestController::class, 'accept']);
     Route::post('/friend-requests/{request_id}/reject', [FriendRequestController::class, 'reject']);
+    Route::get('/friend-requests/search', [FriendRequestController::class, 'search']);
 });
 //friends routes
 Route::middleware('auth:sanctum')->group(function(){
     Route::get('/friends', [FriendController::class, 'index']);
-    Route::post('/friends', [FriendController::class, 'store']);
-    Route::put('/friends/{id}', [FriendController::class, 'update']);
-    Route::delete('/friends/{id}', [FriendController::class, 'destroy']);
+    Route::get('/friends/search', [FriendController::class, 'search']);
+    // Route::post('/friends', [FriendController::class, 'store']);
+    // Route::put('/friends/{id}', [FriendController::class, 'update']);
+    // Route::delete('/friends/{id}', [FriendController::class, 'destroy']);
 });
