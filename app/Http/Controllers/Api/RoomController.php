@@ -31,7 +31,7 @@ class RoomController extends Controller
         $room = Room::create([
             'type' => $request->type,
         ]);
-        $room->users()->attach($request->user()->id, $request->friend_id);
+        $room->users()->attach([$request->user()->id, $request->friend_id]);
         return response()->json([
             'room' => $room
         ], 200);
