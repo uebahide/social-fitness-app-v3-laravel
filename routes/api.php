@@ -76,6 +76,7 @@ Route::middleware('auth:sanctum')->group(function(){
 Route::middleware('auth:sanctum')->group(function(){
     Route::get('/rooms', [RoomController::class, 'index']);
     Route::get('/rooms/{id}', [RoomController::class, 'show']);
+    Route::get('/rooms/{user_id}', [RoomController::class, 'findByUserId']);
     Route::post('/rooms', [RoomController::class, 'store']);
 });
 
