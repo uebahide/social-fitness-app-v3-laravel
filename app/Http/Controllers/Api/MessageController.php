@@ -5,15 +5,14 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Message;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\MessageResource;
 class MessageController extends Controller
 {
     public function index(Request $request, String $room_id)
     {
+        $perPage = $request->input('per_page', 20);
         $messages = Message::where('room_id', $room_id)->with('user')->get();
-        return response()->json([
-            'messages' => $messages
-        ], 200);
+        return MessageResource::collection($messages);
     }
 
     public function store(Request $request, String $room_id)
