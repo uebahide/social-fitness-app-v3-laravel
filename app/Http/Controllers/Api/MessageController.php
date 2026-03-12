@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\MessageSent;
 use App\Http\Controllers\Controller;
 use App\Message;
 use Illuminate\Http\Request;
@@ -25,6 +26,9 @@ class MessageController extends Controller
             'user_id' => $request->user()->id,
             'body' => $request->body,
         ]);
+
+        broadcast(new MessageSent($message))->toOthers();
+
         return response()->json([
             'message' => $message
         ], 200);
