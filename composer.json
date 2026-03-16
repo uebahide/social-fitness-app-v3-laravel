@@ -13,7 +13,8 @@
         "laravel/reverb": "^1.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
-        "league/flysystem-aws-s3-v3": "^3.0"
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "fakerphp/faker": "^1.23"
     },
     "require-dev": {
         "filp/whoops": "^2.15",
