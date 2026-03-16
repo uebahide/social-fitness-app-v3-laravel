@@ -7,6 +7,8 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\FriendController;
 use App\Http\Controllers\Api\FriendRequestController;
+use App\Http\Controllers\Api\MessageController;
+use App\Http\Controllers\Api\RoomController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -68,4 +70,18 @@ Route::middleware('auth:sanctum')->group(function(){
     // Route::post('/friends', [FriendController::class, 'store']);
     // Route::put('/friends/{id}', [FriendController::class, 'update']);
     // Route::delete('/friends/{id}', [FriendController::class, 'destroy']);
+});
+
+//rooms routes
+Route::middleware('auth:sanctum')->group(function(){
+    Route::get('/rooms', [RoomController::class, 'index']);
+    Route::get('/rooms/{id}', [RoomController::class, 'show']);
+    Route::get('/rooms/{user_id}', [RoomController::class, 'findByUserId']);
+    Route::post('/rooms', [RoomController::class, 'store']);
+});
+
+//messages routes
+Route::middleware('auth:sanctum')->group(function(){
+    Route::get('/rooms/{room_id}/messages', [MessageController::class, 'index']);
+    Route::post('/rooms/{room_id}/messages', [MessageController::class, 'store']);
 });
